@@ -107,7 +107,15 @@
         <h1 class="text-3xl md:text-5xl font-bold mb-8">Choose your trees</h1>
       </div>
 
-      <div
+      <!-- Spinner effect  -->
+       <div id="spinner" class="my-20 mx-auto">
+        <span class="loading loading-bars loading-lg"></span>
+       </div>
+
+
+       <!-- Main section starts here -->
+        
+      <div id="main-section"
         class="w-full grid grid-cols-1 md:grid-cols-5 justify-center gap-1 items-start"
       >
         <!-- Drawer  -->
@@ -140,7 +148,8 @@
           class="md:grid flex flex-col-reverse md:grid-cols-4 gap-5 col-span-4"
         >
           <!-- Middle div  -->
-          <!-- Open the modal using ID.showModal() method -->
+
+          <!--  Modal  -->
 
           <dialog
             id="myModal"

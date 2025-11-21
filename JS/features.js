@@ -1,6 +1,8 @@
 // All trees shown
 
 const loadTrees = () => {
+
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/plants`;
   fetch(url)
     .then((res) => res.json())
@@ -52,6 +54,26 @@ const displayTrees = (trees) => {
 
     cardContainer.appendChild(treeCard);
   });
+  manageSpinner(false);
+};
+
+// Spinner effect
+
+const manageSpinner = (status) => {
+  if (status == true) {
+    const spinner = document
+      .getElementById("spinner")
+      .classList.remove("hidden");
+
+    const cardContainer = document
+      .getElementById("main-section")
+      .classList.add("hidden");
+  } else {
+    const spinner = document.getElementById("spinner").classList.add("hidden");
+    const cardContainer = document
+      .getElementById("main-section")
+      .classList.remove("hidden");
+  }
 };
 
 // Modal description
@@ -142,9 +164,6 @@ const displayCategory = (category) => {
     showCategory.innerHTML = `
          <li onClick="treesByCategory(${name.id})" id="category-num-${name.id}" class="hover:bg-green-300 hover:rounded-xl trees-category"><a>${name.category_name}</a></li> `;
 
-    
-   
-
     categoryContainer.appendChild(showCategory);
   });
 };
@@ -155,12 +174,11 @@ const treesByCategory = (id) => {
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
-
-      removeActive();  // Removes active class from all category
+      removeActive(); // Removes active class from all category
 
       displayTrees(data.plants); // Displays trees based on category
 
-        // Adds active class to clicked category
+      // Adds active class to clicked category
       const clickCategory = document.getElementById(`category-num-${id}`);
       clickCategory.classList.add("active");
     });
