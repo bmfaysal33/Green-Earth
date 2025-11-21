@@ -186,7 +186,20 @@ const showCartBtn = (id) => {
   cartContainer.appendChild(div);
 
 
+  // Total Price Calculation
+
+const totalPrice = document.getElementById("total-price");
+const previousTotal = parseFloat(totalPrice.innerText);
+const newTotal = previousTotal + id.price;
+
+totalPrice.innerText = newTotal.toFixed(2);
+
+
 }
+
+
+
+
 
 
 loadCategory();
