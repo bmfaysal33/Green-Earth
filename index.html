@@ -23,7 +23,6 @@
       referrerpolicy="no-referrer"
     />
 
-
     <style>
       .active {
         background-color: #34d399;
@@ -66,7 +65,10 @@
               <li class="text-black text-2xl"><a>Plant a Tree</a></li>
             </ul>
           </div>
-          <a class="btn btn-ghost text-xl text-white">Green Earth</a>
+          <a class="btn btn-ghost text-xl text-white"
+            ><img src="assets/logo.png" class="h-8 md:h-12" alt="" /> Green
+            Earth</a
+          >
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1 text-white">
@@ -108,44 +110,27 @@
       </div>
 
       <!-- Spinner effect  -->
-       <div id="spinner" class="my-20 mx-auto">
+      <div id="spinner" class="my-20 mx-auto">
         <span class="loading loading-bars loading-lg"></span>
-       </div>
+      </div>
 
+      <!-- Main section starts here -->
 
-       <!-- Main section starts here -->
-        
-      <div id="main-section"
+      <div
+        id="main-section"
         class="w-full grid grid-cols-1 md:grid-cols-5 justify-center gap-1 items-start"
       >
         <!-- Drawer  -->
-        <div class="drawer lg:drawer-open w-fit mr-1 grid col-span-1">
-          <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-          <div class="drawer-content flex flex-col items-center justify-center">
-            <!-- Page content here -->
-            <label for="my-drawer-3" class="btn drawer-button lg:hidden">
-              <i class="fa-solid fa-bars text-2xl"></i>
-            </label>
-          </div>
-          <div class="drawer-side">
-            <label
-              for="my-drawer-3"
-              aria-label="close sidebar"
-              class="drawer-overlay"
-            ></label>
+        <ul
+          id="category-container"
+          class="menu mx-auto mb-8 bg-white rounded-2xl min-h-full w-64 p-8 shadow-md"
+        >
+          <li class="p-4 pb-2 text-2xl opacity-80 font-bold">All Categories</li>
+        </ul>
 
-            <ul
-              id="category-container"
-              class="menu bg-white rounded-2xl shadow-2xl min-h-full w-64 p-8"
-            >
-              <h3 class="text-xl font-bold"><a>Categories</a></h3>
-              <!-- Sidebar content here -->
-            </ul>
-          </div>
-        </div>
         <!-- Both card and Add to cart div  -->
         <div
-          class="md:grid flex flex-col-reverse md:grid-cols-4 gap-5 col-span-4"
+          class="md:grid flex flex-col md:grid-cols-4 gap-5 col-span-4"
         >
           <!-- Middle div  -->
 

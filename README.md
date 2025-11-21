@@ -2,7 +2,7 @@
 
 ## Live link: https://green-plants-earth.netlify.app/
 
-## ``This Page is Both Desktop and Mobile Responsive ✅✅✅``
+## `` This Page is Both Desktop and Mobile Responsive ✅✅✅``
 
 ---
 ### Answer to the following questions-
