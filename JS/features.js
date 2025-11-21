@@ -171,7 +171,7 @@ const showCartBtn = (id) => {
   const div = document.createElement("div");
   div.innerHTML = `
   
-              <div
+              <div id="cart-${id.id}"
                 class="w-full h-16 p-3 bg-white rounded-xl my-3 flex justify-between items-center"
               >
                 <div>
@@ -179,7 +179,7 @@ const showCartBtn = (id) => {
                   <p>$${id.price} * 1</p>
                 </div>
                 <div>
-                  <i class="fa-solid fa-xmark cursor-pointer"></i>
+                  <i id="cut-price-${id.id}" class="fa-solid fa-xmark cursor-pointer"></i>
                 </div>
               </div>
   `;
@@ -191,8 +191,23 @@ const showCartBtn = (id) => {
 const totalPrice = document.getElementById("total-price");
 const previousTotal = parseFloat(totalPrice.innerText);
 const newTotal = previousTotal + id.price;
-
 totalPrice.innerText = newTotal.toFixed(2);
+
+// Remove item + deduct price
+
+document.getElementById(`cut-price-${id.id}`).addEventListener("click", () => {
+    const price = parseFloat(id.price);
+    const currentTotal = parseFloat(totalPrice.innerText);
+    const updatedTotal = currentTotal - price;
+    totalPrice.innerText = updatedTotal.toFixed(2);
+
+
+    // Remove item from cart
+const secificCart = document.getElementById(`cart-${id.id}`);
+    secificCart.remove();
+    
+
+});
 
 
 }
