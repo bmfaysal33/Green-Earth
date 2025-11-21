@@ -23,16 +23,16 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- Google fonts  -->
 
-
-      <style>
-        .active{
-          background-color: rgb(107, 237, 107);
-          color: white;
-        }
-      </style>
-
+    <style>
+      .active {
+        background-color: #34d399;
+        color: white;
+        font-weight: 600;
+        border: 1px solid #0a1411;
+        border-radius: 12px;
+      }
+    </style>
   </head>
   <body class="bg-[#f0fdf4]">
     <!-- Navigation bar  -->
@@ -128,7 +128,7 @@
 
             <ul
               id="category-container"
-              class="menu bg-base-200 min-h-full w-64 p-8"
+              class="menu bg-white rounded-2xl shadow-2xl min-h-full w-64 p-8"
             >
               <h3 class="text-xl font-bold"><a>Categories</a></h3>
               <!-- Sidebar content here -->
@@ -142,21 +142,16 @@
           <!-- Middle div  -->
           <!-- Open the modal using ID.showModal() method -->
 
-          <dialog id="myModal" class="modal modal-bottom sm:modal-middle">
-           
-          </dialog>
-
-
-
-
+          <dialog
+            id="myModal"
+            class="modal modal-bottom sm:modal-middle"
+          ></dialog>
 
           <!-- Card container  -->
           <div
             id="card-container"
             class="grid md:grid-cols-3 gap-4 grid-cols-1 w-full col-span-3"
           ></div>
-
-
 
           <!-- Right side -- Cart History -->
           <div
@@ -165,11 +160,9 @@
             <h1 class="text-xl font-semibold mb-4">Your Cart</h1>
 
             <!-- Cart section  -->
-            <div id="cartContainer" class="w-full">
-             
-            </div>
+            <div id="cartContainer" class="w-full"></div>
             <!-- Total card  -->
-            <hr/>
+            <hr />
             <div class="flex justify-between mt-1">
               <h1 class="font-medium">Total:</h1>
               <p>$<span id="total-price">0</span></p>
@@ -224,19 +217,25 @@
         class="flex flex-col md:flex-row gap-6 justify-around items-center my-28 w-full"
       >
         <!-- card 01 -->
-        <div class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center">
+        <div
+          class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center"
+        >
           <h3 class="text-green-500 font-semibold text-3xl mb-3">500k+</h3>
           <p>Trees planted</p>
         </div>
 
         <!-- card 02 -->
-        <div class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center">
+        <div
+          class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center"
+        >
           <h3 class="text-green-500 font-semibold text-3xl mb-3">120+</h3>
           <p>Trees planted</p>
         </div>
 
         <!-- card 03 -->
-        <div class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center">
+        <div
+          class="bg-white hover:bg-green-300 py-10 px-24 md:px-32 rounded-xl text-center"
+        >
           <h3 class="text-green-500 font-semibold text-3xl mb-3">30+</h3>
           <p>Trees planted</p>
         </div>

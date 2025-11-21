@@ -111,15 +111,22 @@ const displayModalInfo = (modalNo) => {
 
 // Left side --- Category
 
+// Show active
+
+const removeActive = () => {
+  const activeClass = document.querySelectorAll(" .trees-category");
+  activeClass.forEach((category) => {
+    console.log(category);
+    category.classList.remove("active");
+  });
+};
+
 const loadCategory = () => {
   const url = "https://openapi.programming-hero.com/api/categories";
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      // removeActive()
       displayCategory(data.categories);
-      // const clickCategory = document.getElementById(`category-num-${id}`);
-      // clickCategory.classList.add('active');
     });
 };
 
@@ -133,7 +140,10 @@ const displayCategory = (category) => {
     const showCategory = document.createElement("ul");
 
     showCategory.innerHTML = `
-         <li onClick="treesByCategory(${name.id})" id="category-num-${name.id}" class="hover:bg-green-300"><a>${name.category_name}</a></li> `;
+         <li onClick="treesByCategory(${name.id})" id="category-num-${name.id}" class="hover:bg-green-300 hover:rounded-xl trees-category"><a>${name.category_name}</a></li> `;
+
+    
+   
 
     categoryContainer.appendChild(showCategory);
   });
@@ -144,7 +154,16 @@ const displayCategory = (category) => {
 const treesByCategory = (id) => {
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
-    .then((data) => displayTrees(data.plants));
+    .then((data) => {
+
+      removeActive();  // Removes active class from all category
+
+      displayTrees(data.plants); // Displays trees based on category
+
+        // Adds active class to clicked category
+      const clickCategory = document.getElementById(`category-num-${id}`);
+      clickCategory.classList.add("active");
+    });
 };
 
 // Show category active function
@@ -152,19 +171,15 @@ const treesByCategory = (id) => {
 // Right side ---- Cart history
 
 const cartBtn = (id) => {
-
   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
-  .then((res) => res.json())
-  .then((data) => showCartBtn(data.plants));
-
- 
+    .then((res) => res.json())
+    .then((data) => showCartBtn(data.plants));
 };
 
-
 const showCartBtn = (id) => {
-// console.log(id);
+  // console.log(id);
 
- const cartContainer = document.getElementById("cartContainer");
+  const cartContainer = document.getElementById("cartContainer");
   // console.log(cartContainer);
   // cartContainer.innerHTML = "";
 
@@ -185,37 +200,28 @@ const showCartBtn = (id) => {
   `;
   cartContainer.appendChild(div);
 
-
   // Total Price Calculation
 
-const totalPrice = document.getElementById("total-price");
-const previousTotal = parseFloat(totalPrice.innerText);
-const newTotal = previousTotal + id.price;
-totalPrice.innerText = newTotal.toFixed(2);
+  const totalPrice = document.getElementById("total-price");
+  const previousTotal = parseFloat(totalPrice.innerText);
+  const newTotal = previousTotal + id.price;
+  totalPrice.innerText = newTotal.toFixed(2);
 
-// Remove item + deduct price
+  // Remove item + deduct price
 
-document.getElementById(`cut-price-${id.id}`).addEventListener("click", () => {
-    const price = parseFloat(id.price);
-    const currentTotal = parseFloat(totalPrice.innerText);
-    const updatedTotal = currentTotal - price;
-    totalPrice.innerText = updatedTotal.toFixed(2);
+  document
+    .getElementById(`cut-price-${id.id}`)
+    .addEventListener("click", () => {
+      const price = parseFloat(id.price);
+      const currentTotal = parseFloat(totalPrice.innerText);
+      const updatedTotal = currentTotal - price;
+      totalPrice.innerText = updatedTotal.toFixed(2);
 
-
-    // Remove item from cart
-const secificCart = document.getElementById(`cart-${id.id}`);
-    secificCart.remove();
-    
-
-});
-
-
-}
-
-
-
-
-
+      // Remove item from cart
+      const secificCart = document.getElementById(`cart-${id.id}`);
+      secificCart.remove();
+    });
+};
 
 loadCategory();
 loadTrees();
